@@ -1,3 +1,3 @@
 export default {
-    games : []
+    news : []
 }
