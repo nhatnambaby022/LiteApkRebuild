@@ -9,3 +9,7 @@ export const getAllNew = () => {
 export const getAllGame = () => {
     return axios.get(`${URL}/game`);
 }
+
+export const getAllType= () => {
+    return axios.get(`${URL}/type`);
+}
