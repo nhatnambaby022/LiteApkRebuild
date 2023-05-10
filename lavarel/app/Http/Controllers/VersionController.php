@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\NewPaper;
+use App\Models\Version;
 
-class NewPaperController extends Controller
+class VersionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class NewPaperController extends Controller
      */
     public function index()
     {
-        return NewPaper::where("isDelete",0)->orderBy("id","asc")->get();
+        //return all version
+        return Version::where("isDelete",0)->orderBy("id_game","asc")->get();
     }
 
     /**

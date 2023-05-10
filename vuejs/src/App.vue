@@ -24,9 +24,15 @@
 			this.getAllGameState();
 			this.getAllTypeState();
 			this.getAllNewState();
+			this.getAllTagState();
 		},
 		methods: {
-			...mapActions(["getAllGameState", "getAllTypeState", "getAllNewState"]),
+			...mapActions([
+				"getAllGameState",
+				"getAllTypeState",
+				"getAllNewState",
+				"getAllTagState",
+			]),
 		},
 	};
 </script>
@@ -42,10 +48,6 @@
 		color: #2c3e50;
 	}
 
-	nav {
-		padding: 30px;
-	}
-
 	nav a {
 		font-weight: bold;
 		color: #2c3e50;
@@ -56,5 +58,6 @@
 	}
 	a {
 		text-decoration: none;
+		color: #7bbf3a;
 	}
 </style>

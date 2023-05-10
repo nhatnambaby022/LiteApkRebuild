@@ -2,19 +2,29 @@
 	<section class="mb-4">
 		<header class="d-flex align-items-center mb-4">
 			<h2 class="font-weight-bold mb-0">
-				<a class="text-body" href="https://liteapks.com/type/editors-choice">
+				<router-link class="text-body" :to="`/type/${this.type.id_type}/1`">
 					{{ type.name_type }}
-				</a>
+				</router-link>
 			</h2>
-			<a
+			<router-link
 				class="btn btn-primary ml-auto"
-				href="https://liteapks.com/type/editors-choice"
-				>View all</a
-			>
+				:to="`/type/${this.type.id_type}/1`">
+				View all
+			</router-link>
 		</header>
 		<div class="row">
 			<GameView
-				v-for="game in games.filter((game) => game.type == type.id_type)"
+				v-for="game in games.filter(
+					function (game) {
+						if (game.type == type.id_type && this.count < 10) {
+							this.count++;
+							return true;
+						} else {
+							return false;
+						}
+					},
+					{count: 0}
+				)"
 				:key="game.id_game"
 				:item="game" />
 		</div>
@@ -24,6 +34,7 @@
 	import GameView from "./GameView.vue";
 	export default {
 		name: "BoxContent",
+
 		props: {
 			type: Object,
 			games: Array,

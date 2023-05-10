@@ -14,7 +14,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return Type::all();
+        return Type::where("isDelete",0)->orderBy("id_type","asc")->get();
     }
 
     /**

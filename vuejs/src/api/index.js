@@ -13,3 +13,23 @@ export const getAllGame = () => {
 export const getAllType= () => {
     return axios.get(`${URL}/type`);
 }
+
+export const getAllTag= () => {
+    return axios.get(`${URL}/tag`);
+}
+
+export const getAllVersion= () => {
+    return axios.get(`${URL}/version`);
+}
+
+export const getGamePage = ({page}) => {
+    return axios.get(`${URL}/game/game?page=${page}`);
+}
+
+export const getAppPage = ({page}) => {
+    return axios.get(`${URL}/game/app?page=${page}`);
+}
+
+export const getGameOfType = ({id,page}) =>{
+    return axios.get(`${URL}/game/getGameOfType?id=${id}&page=${page}`);
+}

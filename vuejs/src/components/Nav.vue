@@ -14,9 +14,9 @@
 				</svg>
 			</button>
 			<h1 class="h2 font-weight-bold mb-0 mr-2 mr-lg-0 site-logo">
-				<a class="text-white" href="https://liteapks.com/" rel="home">
+				<router-link class="text-white" to="/" rel="home">
 					LITEAPKS.COM
-				</a>
+				</router-link>
 			</h1>
 			<nav class="mx-auto site-nav">
 				<div class="d-flex d-lg-none justify-content-end">
@@ -34,29 +34,37 @@
 				</div>
 				<ul id="menu-site-navigation" class="menu">
 					<li
-						id="menu-item-9"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-9 text-start">
-						<a href="https://liteapks.com/" aria-current="page">Home</a>
+						name="nav-item"
+						:class="`menu-item menu-item-type-post_type menu-item-object-page menu-item-home ${
+							pathname.path == '/' ? 'current-menu-item' : ''
+						} text-start`">
+						<router-link to="/">Home</router-link>
 					</li>
 					<li
-						id="menu-item-10"
-						class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10 text-start">
-						<a href="https://liteapks.com/category/apps">Apps</a>
+						name="nav-item"
+						:class="`menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10 text-start ${
+							pathname.path.split('/')[1] == 'apps' ? 'current-menu-item' : ''
+						}`">
+						<router-link to="/apps/1">Apps</router-link>
 					</li>
 					<li
-						id="menu-item-11"
-						class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11 text-start">
-						<a href="https://liteapks.com/category/games">Games</a>
+						name="nav-item"
+						:class="`menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11 text-start ${
+							pathname.path.split('/')[1] == 'games' ? 'current-menu-item' : ''
+						}`">
+						<router-link to="/games/1">Games</router-link>
 					</li>
 					<li
-						id="menu-item-12"
-						class="menu-item menu-item-type-taxonomy menu-item-object-tip_cat menu-item-12 text-start">
-						<a href="https://liteapks.com/news">News</a>
+						name="nav-item"
+						:class="`menu-item menu-item-type-taxonomy menu-item-object-tip_cat menu-item-12 text-start ${
+							pathname.path == '/news/1' ? 'current-menu-item' : ''
+						}`">
+						<router-link to="/news/1">News</router-link>
 					</li>
 				</ul>
 			</nav>
 			<div class="ml-auto ml-lg-0 mw-100" style="width: 300px">
-				<form class="form-search" method="GET" action="https://liteapks.com">
+				<form class="form-search">
 					<div class="input-group">
 						<input
 							class="form-control border-white"
@@ -101,6 +109,7 @@
 						label: "New",
 					},
 				]),
+				pathname: this.$router.currentRoute,
 			};
 		},
 	};
