@@ -26,7 +26,8 @@
 							<TagView
 								v-for="tag in this.tags.filter((tag) => tag.isApp == 0)"
 								:key="tag.id"
-								:tagName="tag.name_tag" />
+								:tagName="tag.name_tag"
+								:id="tag.id_tag" />
 						</div>
 					</section>
 				</main>

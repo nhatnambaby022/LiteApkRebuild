@@ -1,4 +1,4 @@
 ###
-POST http://localhost:8000/api/game/getGameOfType/1
-Content-Type: application/json
+GET http://localhost:8000/api/localhost:8000/api/game/getGameOfTag
+
 

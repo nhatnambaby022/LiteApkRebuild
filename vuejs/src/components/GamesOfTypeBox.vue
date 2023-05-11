@@ -17,12 +17,70 @@
 			</div>
 			<div class="container">
 				<div class="row" style="height: auto !important">
-					<main id="primary" class="content-area">
+					<main id="primary" class="content-areacol-12 col-lg-9 content-area">
 						<BoxContentPage
 							:title="this.title"
 							:data="this.data"
 							:type="this.id" />
 					</main>
+					<aside id="secondary" class="col-12 col-lg-3 widget-area">
+						<section
+							class="bg-white border rounded shadow-sm pt-3 px-2 px-md-3 mb-3">
+							<header class="d-flex align-items-end mb-3">
+								<h2 class="h5 font-weight-semibold mb-0">
+									<router-link class="text-body" to="/games/1">
+										Games
+									</router-link>
+								</h2>
+								<router-link
+									class="btn btn-primary btn-sm ml-auto"
+									to="/games/1">
+									View More
+								</router-link>
+							</header>
+							<div class="row">
+								<div
+									class="col-6 mb-3"
+									v-for="tag in this.tags.filter((tag) => tag.isApp == 0)"
+									:key="tag.id_tag">
+									<router-link
+										class="small text-truncate d-flex"
+										:to="`/tag/${tag.id_tag}/1`"
+										title="Action">
+										{{ tag.name_tag }}
+									</router-link>
+								</div>
+							</div>
+						</section>
+						<section
+							class="bg-white border rounded shadow-sm pt-3 px-2 px-md-3 mb-3">
+							<header class="d-flex align-items-end mb-3">
+								<h2 class="h5 font-weight-semibold mb-0">
+									<router-link class="text-body" to="/apps/1">
+										Apps
+									</router-link>
+								</h2>
+								<router-link
+									class="btn btn-primary btn-sm ml-auto"
+									to="/apps/1">
+									View More
+								</router-link>
+							</header>
+							<div class="row">
+								<div
+									class="col-6 mb-3"
+									v-for="tag in this.tags.filter((tag) => tag.isApp == 1)"
+									:key="tag.id_tag">
+									<router-link
+										class="small text-truncate d-flex"
+										:to="`/tag/${tag.id_tag}/1`"
+										title="Action">
+										{{ tag.name_tag }}
+									</router-link>
+								</div>
+							</div>
+						</section>
+					</aside>
 				</div>
 			</div>
 		</div>
@@ -32,9 +90,12 @@
 <script>
 	// @ is an alias to /src
 	import BoxContentPage from "@/components/BoxContentPage.vue";
+	import {mapGetters} from "vuex";
 	export default {
 		name: "GamesOfTypeBox",
-		computed: {},
+		computed: {
+			...mapGetters(["tags"]),
+		},
 		components: {
 			BoxContentPage,
 		},
@@ -42,9 +103,6 @@
 			data: Object,
 			title: String,
 			id: String,
-		},
-		created() {
-			console.log("ok");
 		},
 	};
 </script>

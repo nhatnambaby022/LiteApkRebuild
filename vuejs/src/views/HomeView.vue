@@ -6,13 +6,11 @@
 					<section class="mb-4">
 						<header class="d-flex align-items-end mb-4">
 							<h2 class="font-weight-bold mb-0">
-								<a class="text-body" href="https://liteapks.com/news"> News </a>
+								<router-link class="text-body" to="/news/1"> News </router-link>
 							</h2>
-							<a
-								class="btn btn-primary ml-auto"
-								href="https://liteapks.com/news"
-								>View all</a
-							>
+							<router-link class="btn btn-primary ml-auto" to="/news/1">
+								View all
+							</router-link>
 						</header>
 						<div class="row">
 							<NewsView v-for="item in this.news" :item="item" :key="item.id" />
@@ -39,8 +37,9 @@
 							<TagView
 								v-for="tag in this.tags.filter((tag) => tag.isApp == 0)"
 								:v-if="tag.isApp == 0"
-								:key="tag.id"
-								:tagName="tag.name_tag" />
+								:key="tag.id_tag"
+								:tagName="tag.name_tag"
+								:id="tag.id_tag" />
 						</div>
 					</section>
 					<section class="mb-4">
@@ -57,8 +56,9 @@
 						<div class="row">
 							<TagView
 								v-for="tag in this.tags.filter((tag) => tag.isApp == 1)"
-								:key="tag.id"
-								:tagName="tag.name_tag" />
+								:key="tag.id_tag"
+								:tagName="tag.name_tag"
+								:id="tag.id_tag" />
 						</div>
 					</section>
 				</main>

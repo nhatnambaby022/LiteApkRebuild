@@ -12,6 +12,8 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //get all application
     public function index()
     {
         $games = DB::table("game")
@@ -27,6 +29,7 @@ class GameController extends Controller
         return $games;
     }
 
+    //get page app
     public function paginationApp()
     {
         $games = DB::table("game")
@@ -43,6 +46,7 @@ class GameController extends Controller
         return $games;
     }
 
+    //get page game
     public function paginationGame()
     {
         $games = DB::table("game")
@@ -59,6 +63,7 @@ class GameController extends Controller
         return $games;
     }
 
+    //get page game off type
     public function getGameOfType(Request $request)
     {
         $id = $request->id;
@@ -76,6 +81,46 @@ class GameController extends Controller
         return $games;
         
     }
+
+    //get pahe game of tag
+    public function getGameOfTag(Request $request)
+    {
+        $id = $request->id;
+        $games = DB::table("game")
+                    ->orderBy("id_game","asc")
+                    ->join("type", "game.type", "=", "type.id_type")
+                    ->join("tag", "game.tag_id", "=", "tag.id_tag")
+                    ->join("publisher", "game.publisher_id", "=", "publisher.id_publisher")
+                    ->select("game.*","game.isDelete as game_isDelete","type.*", "type.isDelete as type_isDelete","publisher.publisher_name","tag.isApp","tag.name_tag")
+                    ->where("game.isDelete",0)
+                    ->where("type.isDelete",0)
+                    ->where("tag.isDelete",0)
+                    ->where("game.tag_id",$id)
+                    ->paginate(3);
+        return $games;
+        
+    }
+
+    //get application by id
+    public function getApplicationById(Request $request)
+    {
+        $id = $request->id;
+        $games = DB::table("game")
+                    ->orderBy("id_game","asc")
+                    ->join("type", "game.type", "=", "type.id_type")
+                    ->join("tag", "game.tag_id", "=", "tag.id_tag")
+                    ->join("publisher", "game.publisher_id", "=", "publisher.id_publisher")
+                    ->select("game.*","game.isDelete as game_isDelete","type.*", "type.isDelete as type_isDelete","publisher.publisher_name","tag.isApp","tag.name_tag")
+                    ->where("game.isDelete",0)
+                    ->where("type.isDelete",0)
+                    ->where("tag.isDelete",0)
+                    ->where("game.id",$id)
+                    ->get();
+        return $games;
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -66,7 +66,7 @@
 </template>
 <script>
 	export default {
-		name: "GameView",
+		name: "GameViewBoxBox",
 		props: {
 			item: Object,
 		},

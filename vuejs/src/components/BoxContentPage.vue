@@ -6,7 +6,7 @@
 			</h2>
 		</header>
 		<div class="row">
-			<GameView v-for="game in data.data" :key="game.id_game" :item="game" />
+			<GameViewBox v-for="game in data.data" :key="game.id_game" :item="game" />
 		</div>
 		<nav class="nav-pagination">
 			<ul class="pagination">
@@ -59,7 +59,7 @@
 	</section>
 </template>
 <script>
-	import GameView from "./GameView.vue";
+	import GameViewBox from "./GameViewBox.vue";
 	export default {
 		name: "BoxContentPage",
 		props: {
@@ -76,7 +76,7 @@
 		},
 
 		components: {
-			GameView,
+			GameViewBox,
 		},
 	};
 </script>

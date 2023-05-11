@@ -13,7 +13,7 @@
 			</router-link>
 		</header>
 		<div class="row">
-			<GameView
+			<GameViewBox
 				v-for="game in games.filter(
 					function (game) {
 						if (game.type == type.id_type && this.count < 10) {
@@ -31,7 +31,7 @@
 	</section>
 </template>
 <script>
-	import GameView from "./GameView.vue";
+	import GameViewBox from "./GameViewBox.vue";
 	export default {
 		name: "BoxContent",
 
@@ -40,7 +40,7 @@
 			games: Array,
 		},
 		components: {
-			GameView,
+			GameViewBox,
 		},
 	};
 </script>

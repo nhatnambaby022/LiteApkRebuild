@@ -30,6 +30,7 @@ Route::prefix("game")->group(function (){
     Route::get("/game",[GameController::class,"paginationGame"]);
     Route::get("/app",[GameController::class,"paginationApp"]);
     Route::get("/getGameOfType",[GameController::class,"getGameOfType"]);
+    Route::get("/getGameOfTag",[GameController::class,"getGameOfTag"]);
 });
 
 Route::prefix("type")->group(function(){

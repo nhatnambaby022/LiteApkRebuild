@@ -26,6 +26,16 @@ const routes = [
     path: '/type/:id/:page',
     name: 'game of type',
     component: () => import('../views/GameOfType.vue')
+  },
+  {
+    path: '/tag/:id/:page',
+    name: 'game of tag',
+    component: () => import('../views/GamesOfTag.vue')
+  },
+  {
+    path: '/details/:id',
+    name: 'details of app',
+    component: () => import('../views/GameView.vue')
   }
 ]
 

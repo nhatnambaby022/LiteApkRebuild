@@ -33,3 +33,7 @@ export const getAppPage = ({page}) => {
 export const getGameOfType = ({id,page}) =>{
     return axios.get(`${URL}/game/getGameOfType?id=${id}&page=${page}`);
 }
+
+export const getGameOfTag = ({id,page}) =>{
+    return axios.get(`${URL}/game/getGameOfTag?id=${id}&page=${page}`);
+}
